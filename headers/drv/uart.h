@@ -1,7 +1,7 @@
 /**
  * @file  uart.h
  * @date  10-December-2020
- * @brief UART configuration and access.
+ * @brief Configuration and access of UART interfaces.
  *
  * @author
  * @author
@@ -18,15 +18,17 @@
 
 
 /**
- * @brief Max number of UART IDs.
+ * @brief Maximum number of UART IDs, which limits the maximum number of 
+ * UART channels that can be configured by this driver. UART_MAX_ID
+ * can be changed by defining it on setup.h file.
  */
 #ifndef UART_MAX_ID
-#define UART_MAX_ID                                                            1
+#define UART_MAX_ID                                                            3
 #endif
 
 
 /**
- * @brief Stop reception command.
+ * @brief Command to stop reception when used with UART_Read function.
  */
 #define UART_ABORT_RECEPTION                                                0x00
 
