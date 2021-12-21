@@ -1,7 +1,7 @@
 /**
  * @file  spi.h
  * @date  18-December-2020
- * @brief SPI configuration and access.
+ * @brief Configuration and access of Serial Peripheral Interfaces.
  *
  * @author
  * @author
@@ -18,10 +18,12 @@
 
 
 /**
- * @brief Max number of SPI IDs.
+ * @brief Maximum number of SPI IDs, which limits the maximum number of 
+ * SPI devices that can be configured by this driver. SPI_MAX_ID can be changed
+ * by defining it on setup.h file.
  */
 #ifndef SPI_MAX_ID
-#define SPI_MAX_ID                                                             2
+#define SPI_MAX_ID                                                             3
 #endif
 
 

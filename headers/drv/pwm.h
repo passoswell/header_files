@@ -1,7 +1,7 @@
 /**
  * @file  pwm.h
  * @date  13-December-2020
- * @brief UART configuration and access.
+ * @brief Configuration and access of Pulse Width Modulator hardware.
  *
  * @author
  * @author
@@ -18,10 +18,12 @@
 
 
 /**
- * @brief Max number of PWM IDs.
+ * @brief Maximum number of PWM IDs, which limits the maximum number of 
+ * PWM pins that can be configured by this driver. PWM_MAX_ID can be changed
+ * by defining it on setup.h file.
  */
 #ifndef PWM_MAX_ID
-#define PWM_MAX_ID                                                             2
+#define PWM_MAX_ID                                                             3
 #endif
 
 /**

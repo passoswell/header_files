@@ -1,7 +1,7 @@
 /**
  * @file  iic.h
  * @date  14-December-2020
- * @brief IIC configuration and access.
+ * @brief Configuration and access to Inter-Integrated Circuit interfaces.
  *
  * @author
  * @author
@@ -18,10 +18,12 @@
 
 
 /**
- * @brief Max number of IIC IDs.
+ * @brief Maximum number of IIC IDs, which limits the maximum number of 
+ * IIC devices that can be configured by this driver. IIC_MAX_ID can be changed
+ * by defining it on setup.h file.
  */
 #ifndef IIC_MAX_ID
-#define IIC_MAX_ID                                                             2
+#define IIC_MAX_ID                                                             3
 #endif
 
 

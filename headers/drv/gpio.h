@@ -1,7 +1,7 @@
 /**
  * @file  gpio.h
  * @date  11-October-2020
- * @brief GPIO configuration and access.
+ * @brief Configuration and access General Purpose I/O.
  *
  * This header file contains the prototypes for GPIO
  * configuration and access.
@@ -15,14 +15,15 @@
 
 #include <stdint.h>
 #include "stdstatus.h"
-
 #include "setup.h"
 
 
 /**
- * Max number of GPIOs allowed.
+ * @brief Maximum number of GPIO IDs, which limits the maximum number of 
+ * GPIO pins that can be configured by this driver. GPIO_MAX_ID can be changed
+ * by defining it on setup.h file.
  */
-#ifndef GPIO_MAX_ID /* It may be defined on Setup.h file */
+#ifndef GPIO_MAX_ID
 #define GPIO_MAX_ID                                                           50
 #endif
 
@@ -97,7 +98,7 @@ typedef enum
 typedef enum
 {
   GPIO_LOW_LEVEL  = 0,    /*!< Low level logic  */
-  GPIO_HIGH_LEVEL = 1,    /*!< High Level logic */
+  GPIO_HIGH_LEVEL = 1,    /*!< High level logic */
 }GPIO_DataOutput_t;
 
 /**
@@ -124,7 +125,7 @@ EStatus_t GPIO_Init(uint8_t ID, GPIO_Parameters_t Parameter);
 
 /**
  * @brief  Output set routine.
- * @param  ID : Whose pin's should be set
+ * @param  ID : Whose pin should be set
  * @retval EStatus_t
  * @note   Pin must be an output pin.
  */
@@ -133,7 +134,7 @@ EStatus_t GPIO_Set(uint8_t ID);
 
 /**
  * @brief  Output clear routine.
- * @param  ID : Whose pin's should be cleared
+ * @param  ID : Whose pin should be cleared
  * @retval EStatus_t
  * @note   Pin must be an output pin.
  */
@@ -142,7 +143,7 @@ EStatus_t GPIO_Clear(uint8_t ID);
 
 /**
  * @brief  Output toggle routine.
- * @param  ID : Whose pin's should be changed
+ * @param  ID : Whose pin should have its state changed
  * @retval EStatus_t
  * @note   Pin must be an output.
  */
@@ -151,8 +152,8 @@ EStatus_t  GPIO_Toggle(uint8_t ID);
 
 /**
  * @brief  Input read routine.
- * @param  ID : ID whose pin's should be read.
- * @param  InputValue : Pin's value: GPIO_LOW_LEVEL or GPIO_HIGH_LEVEL
+ * @param  ID : ID Whose pin's should be read.
+ * @param  InputValue : Pin's value is one of @ref GPIO_DataOutput_t
  * @retval EStatus_t
  * @note   Pin must be an input.
  */

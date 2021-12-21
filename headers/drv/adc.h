@@ -1,7 +1,7 @@
 /**
  * @file  adc.h
  * @date  18-December-2020
- * @brief ADC configuration and access.
+ * @brief Configuration and access to Analog to Digital Converters.
  *
  * @author
  * @author
@@ -18,14 +18,16 @@
 
 
 /**
- * @brief Max number of ADC IDs.
+ * @brief Maximum number of ADC IDs, which limits the maximum number of 
+ * ADC channels that can be configured by this driver. ADC_MAX_ID can be changed
+ * by defining it on setup.h file.
  */
 #ifndef ADC_MAX_ID
 #define ADC_MAX_ID                                                             3
 #endif
 
 /**
- * @brief List of hardware ADC ports.
+ * @brief List of hardware ADCs.
  */
 typedef enum
 {

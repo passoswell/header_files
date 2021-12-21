@@ -1,10 +1,10 @@
 /**
  * @file  pit.h
  * @date  01-November-2020
- * @brief PIT configuration and access.
+ * @brief Configuration and access to Periodic Interruption Timers.
  *
- * This header file contains the prototypes for software PIT
- * configuration and access.
+ * This header file contains the prototypes for configuration and access
+ * of software timers.
  *
  * @author
  * @author
@@ -20,7 +20,9 @@
 
 
 /**
- * @brief Max number of PIT's.
+ * @brief Maximum number of PIT IDs, which limits the maximum number of 
+ * software timers that can be configured by this driver. PIT_MAX_ID can be
+ * changed by defining it on setup.h file.
  */
 #ifndef PIT_MAX_ID
 #define PIT_MAX_ID                                                            10
