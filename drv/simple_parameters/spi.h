@@ -1,7 +1,7 @@
 /**
  * @file  spi.h
  * @date  18-December-2020
- * @brief Configuration and access of Serial Peripheral Interfaces.
+ * @brief Configuration and access of Serial Peripheral Interfaces as master.
  *
  * @author
  * @author
@@ -43,56 +43,6 @@ typedef enum
 } SPI_Port_t;
 
 /**
- * @brief List of GPIO ports.
- */
-typedef enum
-{
-  SPI_GPIO_PORT_A = 0,
-  SPI_GPIO_PORT_B,
-  SPI_GPIO_PORT_C,
-  SPI_GPIO_PORT_D,
-  SPI_GPIO_PORT_E,
-  SPI_GPIO_PORT_F,
-  SPI_GPIO_PORT_G,
-  SPI_GPIO_PORT_H,
-  SPI_NUMBER_OF_GPIO_PORTS,
-} SPI_ChipSelectPort_t;
-
-/**
- * @brief List of GPIO pins.
- */
-typedef enum
-{
-  SPI_GPIO_PIN_0 = 0,
-  SPI_GPIO_PIN_1,
-  SPI_GPIO_PIN_2,
-  SPI_GPIO_PIN_3,
-  SPI_GPIO_PIN_4,
-  SPI_GPIO_PIN_5,
-  SPI_GPIO_PIN_6,
-  SPI_GPIO_PIN_7,
-  SPI_GPIO_PIN_8,
-  SPI_GPIO_PIN_9,
-  SPI_GPIO_PIN_10,
-  SPI_GPIO_PIN_11,
-  SPI_GPIO_PIN_12,
-  SPI_GPIO_PIN_13,
-  SPI_GPIO_PIN_14,
-  SPI_GPIO_PIN_15,
-  SPI_NUMBER_OF_PINS,
-}SPI_ChipSelectPin_t;
-
-/**
- * @brief List of polarities.
- */
-typedef enum
-{
-  SPI_ACTIVE_LOW  = 0,
-  SPI_ACTIVE_HIGH,
-  SPI_NUMBER_OF_POLARITIES,
-} SPI_Polarity_t;
-
-/**
  * @brief List of SPI modes.
  * @note
  *        CPOL = 0 : SCL idles at 0 (low level)
@@ -112,19 +62,27 @@ typedef enum
 }SPI_Mode_t;
 
 /**
+ * @brief Options for configuration of CS pin
+ */
+typedef enum
+{
+  SPI_HARDWARE_CS = 0, /*!< The CS is controled by hardware, if available */
+  SPI_SOFTWARE_CS,     /*!< The CS must be configured and manibulated 
+                            by the caller */
+}SPI_CS_Options;
+
+/**
  * @brief SPI configuration structure.
  */
 typedef struct
 {
-  SPI_Port_t           Port;
-  SPI_Mode_t           Mode;
+  SPI_Port_t     Port;
+  SPI_Mode_t     Mode;
 
-  SPI_ChipSelectPort_t ChipSelectPort;
-  SPI_ChipSelectPin_t  ChipSelectPin;
-  SPI_Polarity_t       ChipSelectPolarity;
+  SPI_CS_Options CsMode;              
 
-  float                ClockFrequency;
-  uint8_t              MosiValueOnReads; /*!<Value sent during read operations*/
+  float          ClockFrequency;
+  uint8_t        MosiValueOnReads; /*!<Value sent during read operations*/
 } SPI_Parameters_t;
 
 
@@ -172,18 +130,5 @@ EStatus_t SPI_Read(uint8_t ID, uint8_t *RecBuffer, uint16_t RecLength);
  */
 EStatus_t SPI_Transfer(uint8_t ID, uint8_t *SendBuffer, uint8_t *RecBuffer,
     uint16_t Length);
-
-
-/**
- * @brief  Routine to  take control over CS line state.
- * @param  ID : SPI ID number.
- * @param  Lock : Locks state of CS pin if equals to one.
- * @param  Value : Value at which CS pin will lock, either 0 or 1.
- * @retval EStatus_t
- * @note   If Lock is zero, CS pin goes to unselected state.
- *         If Lock is not zero, CS goes to zero if Value is zero.
- *         If Lock is not zero, CS goes to one if Value is not zero.
- */
-EStatus_t SPI_CsControl(uint8_t ID, uint8_t Lock, uint8_t Value);
 
 #endif /* SPI_H */
