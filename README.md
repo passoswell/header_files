@@ -9,7 +9,7 @@
 * [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
-* [Contact](#contact)
+* [Contact](#markdown-header-contact)
 
 ## General info
 Add more general information about project. What the purpose of the project is? Motivation?
